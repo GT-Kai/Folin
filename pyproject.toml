@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "folin_v1"
+version = "0.1.0"
+description = "基于DeepSeek-R1的本地化语音助手"
+readme = "README.rst"
+authors = [
+  {name = "Folin-V1", email = "2975177159@qq.com"}
+]
+maintainers = [
+  {name = "Folin-V1", email = "2975177159@qq.com"}
+]
+classifiers = [
+
+]
+license = {text = "MIT license"}
+dependencies = [
+  "typer"
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+
+bugs = "https://github.com/GT-Kai/folin_v1/issues"
+changelog = "https://github.com/GT-Kai/folin_v1/blob/master/changelog.md"
+homepage = "https://github.com/GT-Kai/folin_v1"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+## GT-Kai 
+[tool.pytest.ini_options]
+addopts = "-ra -v --asyncio-mode=auto"
+asyncio_mode = "auto"
+markers = [
+    "asyncio: mark test as async",
+]
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
